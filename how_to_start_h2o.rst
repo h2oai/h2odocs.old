@@ -17,20 +17,23 @@ H2O is a pure java application.
    * PC Example: Click start -> all programs -> accessories -> command prompt 
 
 2. Locate your h2o.jar file
-   Note: make sure you have downloaded the latest version of the file
-   File Example: h2o-12.29.10-121812.jar
-   Mac Example: Click Finder -> Downloads -> Look under the date you downloaded the file
-   PC Example: Click start -> your user name at the top -> downloads
+
+   * Note: make sure you have downloaded the latest version of the file
+   * File Example: h2o-12.29.10-121812.jar
+   * Mac Example: Click Finder -> Downloads -> Look under the date you downloaded the file
+   * PC Example: Click start -> your user name at the top -> downloads
 
 3. Input the following command in your terminal window 
-   java -Xmx1g -jar h2o.jar -name mystats-cloud 
-   Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
+
+   * java -Xmx1g -jar h2o.jar -name mystats-cloud 
+   * Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
 
 4. The terminal should respond with the following 
-   java -Xmx1g -jar h2o.jar  -name mystats-cloud -ip 192.168.1.90
-   [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
-   [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
-   [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]
+
+   * java -Xmx1g -jar h2o.jar  -name mystats-cloud -ip 192.168.1.90
+   * [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
+   * [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
+   * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]
 
 5. You have created a cloud! Open browser to <code>http://localhost:54323/</code> and start playing with
        your data.
@@ -38,37 +41,40 @@ H2O is a pure java application.
 If you have multiple internet interfaces you will be prompted for -ip
 
 **Shutdown a cloud:**
-    http://ip-address:54321/Shutdown
 
-    example:
-    wget http://192.168.1.150:54321/Shutdown
+1. http://ip-address:54321/Shutdown
 
-    Also via, kill signal to all pids on all nodes
-    $ kill -9 PID
+    *example: wget http://192.168.1.150:54321/Shutdown
+
+2. Also via, kill signal to all pids on all nodes
+    
+    *example: $ kill -9 PID
 
 **Launch with HDFS**
   
      parameters: 
        -hdfs -hdfs_version -hdfs_root
 
-    1. Input the following command in your terminal window 
-       java -Xmx1g -jar h2o.jar -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets 
-       Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
+1. Input the following command in your terminal window 
 
-    2. The terminal should respond with the following 
-       [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
-       [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
-       Nov 28, 2012 3:41:25 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
-       WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where 
-       applicable
-       [h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
-       [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]
+       * java -Xmx1g -jar h2o.jar -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets 
+       * Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
 
-    3. Open browser to <code>http://localhost:54321/</code> and start playing with your data!
+2. The terminal should respond with the following 
+
+       * [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
+       * [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
+       * Nov 28, 2012 3:41:25 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
+       * WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where 
+         applicable
+       *[h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
+       *[h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]
+
+3. Open browser to <code>http://localhost:54321/</code> and start playing with your data!
   
-##Starting Multiple Nodes 
+**Starting Multiple Nodes** 
 
-###Launch with FlatFile of nodes
+**Launch with FlatFile of nodes**
 
 
 H2O can use UDP multicast, which may create traffic on other ports, but that shouldn't matter or occur if you use the **--flatfile** option.
