@@ -8,6 +8,7 @@ How To Start H2O
 H2O is a pure java application.
 ## Starting a H<sub>2</sub>O cluster from the command line
 
+..  
     1. Open the terminal program on your computer 
        Mac Example: Click applications -> utilities -> terminal
        PC Example: Click start -> all programs -> accessories -> command prompt 
@@ -18,8 +19,7 @@ H2O is a pure java application.
        Mac Example: Click Finder -> Downloads -> Look under the date you downloaded the file
        PC Example: Click start -> your user name at the top -> downloads
 
-    3. Run the following command
-       Input the following command in your terminal window 
+    3. Input the following command in your terminal window 
        java -Xmx1g -jar h2o.jar -name mystats-cloud 
        Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
 
