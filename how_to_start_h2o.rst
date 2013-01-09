@@ -78,16 +78,16 @@ H2O can use UDP multicast, which may create traffic on other ports, but that sho
 The flatfile is now required for all installations, to avoid any dependence on UDP multicast.
 The flatfile must be the same for all invocations, and has this format (the ports match the base address that was given above. In prior versions of H2O, the ip address must be the base address plus 1)
 
-   * /192.168.1.173:55313
-   * /192.168.1.174:55313
-   * /192.168.1.175:55313
+ * /192.168.1.173:55313
+ * /192.168.1.174:55313
+ * /192.168.1.175:55313
 
 For default ports (HTTP:54321, UDP:54322, TCP:54323) 
 Just flat file of ip addresses works:
 
-    * 192.168.1.173
-    * 192.168.1.174
-    * 192.168.1.175
+ * 192.168.1.173
+ * 192.168.1.174
+ * 192.168.1.175
 
 example:
 
