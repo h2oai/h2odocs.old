@@ -33,18 +33,18 @@ H2O is a pure java application.
    * java -Xmx1g -jar h2o.jar  -name mystats-cloud -ip 192.168.1.90
    * [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
    * [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
-   * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]
+   * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54323]
 
-5. You have created a cloud! Open browser to <code>http://localhost:54323/</code> and start playing with
+5. You have created a cloud! Open browser to http://localhost:54323/ and start playing with
        your data.
 
 If you have multiple internet interfaces you will be prompted for -ip
 
 **Shutdown a cloud:**
 
-1. http://ip-address:54321/Shutdown
+1. http://ip-address:54323/Shutdown
 
-    *example: wget http://192.168.1.150:54321/Shutdown
+    *example: wget http://192.168.1.150:54323/Shutdown
 
 2. Also via, kill signal to all pids on all nodes
     
@@ -68,9 +68,9 @@ If you have multiple internet interfaces you will be prompted for -ip
        * WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where 
          applicable
        *[h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
-       *[h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]
+       *[h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54323]
 
-3. Open browser to <code>http://localhost:54321/</code> and start playing with your data!
+3. Open browser to http://localhost:54323/ and start playing with your data!
   
 **Starting Multiple Nodes** 
 
@@ -81,40 +81,37 @@ H2O can use UDP multicast, which may create traffic on other ports, but that sho
 The flatfile is now required for all installations, to avoid any dependence on UDP multicast.
 The flatfile must be the same for all invocations, and has this format (the ports match the base address that was given above. In prior versions of H2O, the ip address must be the base address plus 1)
 
-    /192.168.1.173:55313
-    /192.168.1.174:55313
-    /192.168.1.175:55313
+    * /192.168.1.173:55313
+    * /192.168.1.174:55313
+    * /192.168.1.175:55313
 
 For default ports (HTTP:54321, UDP:54322, TCP:54323) 
 Just flat file of ip addresses works:
 
-     192.168.1.173
-     192.168.1.174
-     192.168.1.175
+     * 192.168.1.173
+     * 192.168.1.174
+     * 192.168.1.175
 
 example:
 
-    java -Xmx4g -jar h2o.jar -flatfile flatfile
-     [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
-     [h2o] (v0.3) 'hduser' on /192.168.1.151:54321, static configuration based on -flatfile flatfile
-     [h2o] Paxos Cloud of size 1 formed: [/192.168.1.151:54321]
-     [h2o] Paxos Cloud voting in progress
-     [h2o] Paxos Cloud of size 2 formed: [/192.168.1.151:54321, /192.168.1.150:54321
+    * java -Xmx4g -jar h2o.jar -flatfile flatfile
+    * [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
+    * [h2o] (v0.3) 'hduser' on /192.168.1.151:54321, static configuration based on -flatfile flatfile
+    * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.151:54321]
+    * [h2o] Paxos Cloud voting in progress
+    * [h2o] Paxos Cloud of size 2 formed: [/192.168.1.151:54321, /192.168.1.150:54321
 
-## Other issues/arguments
+**Other Issues/Arguments**
+
 There are a number of arguments to an H2O jar invocation. All instantiations of the jar must have the exact same arguments.
 You should verify what java is installed on your machine. Ideally all machines have the same java and version?
 
-    java -version
+    * java -version
 
-    java version "1.7.0_09"
-    Java(TM) SE Runtime Environment (build 1.7.0_09-b05)
-    Java HotSpot(TM) 64-Bit Server VM (build 23.5-b02, mixed mode)
-
-
-Example:
-
-    java -Xmx28G -ea -jar /tmp/h2o.jar --port=55313 --ip=192.168.1.173 --ice_root=/home/0xdiag/ice.55313.1354140499.31 --name=pytest-kevin -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets --flatfile=/tmp/flatfile_kevin
+    * java version "1.7.0_09"
+    * Java(TM) SE Runtime Environment (build 1.7.0_09-b05)
+    * Java HotSpot(TM) 64-Bit Server VM (build 23.5-b02, mixed mode)
+    * Example: java -Xmx28G -ea -jar /tmp/h2o.jar --port=55313 --ip=192.168.1.173 --ice_root=/home/0xdiag/ice.55313.1354140499.31 --name=pytest-kevin -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets --flatfile=/tmp/flatfile_kevin
 
 
 **-Xmx28G** specifies a maximum size of 28GB for the java heap. Generally, the default java heap size used by the OS will not be sufficient for any large datasets. It should be set as large as possible, but no bigger than the max dram size minus 1-2GB. If there are other java programs running simultaneously, you should decrease their heap size limits, from the amount you can allocate to the h2o heap. It is okay to have different heap sizes on different h2o invocations, but typically multi-node systems should have machines that are reasonably similar, with similar max heap sizes.
