@@ -35,8 +35,7 @@ H2O is a pure java application.
    * [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
    * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54323]
 
-5. You have created a cloud! Open browser to http://localhost:54323/ and start playing with
-       your data.
+5. You have created a cloud! Open browser to http://localhost:54323/ and start playing with your data.
 
 If you have multiple internet interfaces you will be prompted for -ip
 
