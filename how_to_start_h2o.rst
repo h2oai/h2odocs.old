@@ -3,33 +3,33 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-How To Start H2O
-===============================
-H2O is a pure java application.
-## Starting a H<sub>2</sub>O cluster from the command line
+**How To Start H2O**
 
-..  
-    1. Open the terminal program on your computer 
+H2O is a pure java application.
+
+**Starting a H2O cluster from the command line**
+
+1. Open the terminal program on your computer 
        Mac Example: Click applications -> utilities -> terminal
        PC Example: Click start -> all programs -> accessories -> command prompt 
 
-    2. Locate your h2o.jar file
+2. Locate your h2o.jar file
        Note: make sure you have downloaded the latest version of the file
        File Example: h2o-12.29.10-121812.jar
        Mac Example: Click Finder -> Downloads -> Look under the date you downloaded the file
        PC Example: Click start -> your user name at the top -> downloads
 
-    3. Input the following command in your terminal window 
+3. Input the following command in your terminal window 
        java -Xmx1g -jar h2o.jar -name mystats-cloud 
        Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
 
-    4. The terminal should respond with the following 
+4. The terminal should respond with the following 
        java -Xmx1g -jar h2o.jar  -name mystats-cloud -ip 192.168.1.90
        [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
        [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
        [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]
 
-    5. You have created a cloud! Open browser to <code>http://localhost:54321/</code> and start playing with
+5. You have created a cloud! Open browser to <code>http://localhost:54323/</code> and start playing with
        your data.
 
 If you have multiple internet interfaces you will be prompted for -ip
