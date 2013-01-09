@@ -12,8 +12,9 @@ H2O is a pure java application.
 **Starting a H2O cluster from the command line**
 
 1. Open the terminal program on your computer 
-   -, Mac Example: Click applications -> utilities -> terminal
-   -, PC Example: Click start -> all programs -> accessories -> command prompt 
+
+   * Mac Example: Click applications -> utilities -> terminal
+   * PC Example: Click start -> all programs -> accessories -> command prompt 
 
 2. Locate your h2o.jar file
    Note: make sure you have downloaded the latest version of the file
