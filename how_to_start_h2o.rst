@@ -39,15 +39,15 @@ H2O is a pure java application.
 
 If you have multiple internet interfaces you will be prompted for -ip
 
-**Shutdown a cloud:**
+**Shutdown a cloud**
 
 1. http://ip-address:54323/Shutdown
 
-    *example: wget http://192.168.1.150:54323/Shutdown
+   * Example: wget http://192.168.1.150:54323/Shutdown
 
 2. Also via, kill signal to all pids on all nodes
     
-    *example: $ kill -9 PID
+   * Example: $ kill -9 PID
 
 **Launch with HDFS**
   
@@ -55,17 +55,17 @@ Parameters: -hdfs -hdfs_version -hdfs_root
 
 1. Input the following command in your terminal window 
 
-       * java -Xmx1g -jar h2o.jar -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets 
-       * Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
+   * java -Xmx1g -jar h2o.jar -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets 
+   * Note: The h2o.jar should look like this h2o-12.29.10-121812.jar
 
 2. The terminal should respond with the following 
 
-       * [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
-       * [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
-       * Nov 28, 2012 3:41:25 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
-       * WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-       * [h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
-       * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54323]
+   * [h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
+   * [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
+   * Nov 28, 2012 3:41:25 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
+   * WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+   * [h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
+   * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54323]
 
 3. Open browser to http://localhost:54323/ and start playing with your data!
   
@@ -78,16 +78,16 @@ H2O can use UDP multicast, which may create traffic on other ports, but that sho
 The flatfile is now required for all installations, to avoid any dependence on UDP multicast.
 The flatfile must be the same for all invocations, and has this format (the ports match the base address that was given above. In prior versions of H2O, the ip address must be the base address plus 1)
 
-    * /192.168.1.173:55313
-    * /192.168.1.174:55313
-    * /192.168.1.175:55313
+   * /192.168.1.173:55313
+   * /192.168.1.174:55313
+   * /192.168.1.175:55313
 
 For default ports (HTTP:54321, UDP:54322, TCP:54323) 
 Just flat file of ip addresses works:
 
-     * 192.168.1.173
-     * 192.168.1.174
-     * 192.168.1.175
+    * 192.168.1.173
+    * 192.168.1.174
+    * 192.168.1.175
 
 example:
 
