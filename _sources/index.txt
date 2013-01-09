@@ -13,7 +13,6 @@ Contents:
    :maxdepth: 2
    
    how_to_start_h2o
-   new_page
 
 
 Indices and tables
