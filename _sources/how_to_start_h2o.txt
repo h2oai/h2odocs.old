@@ -3,16 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to h2o's documentation!
+How To Start H2O
 ===============================
-H2O is the math runtime for BigData
+H2O is a pure java application.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
-   
-   how_to_start_h2o
+
 
 
 Indices and tables

@@ -5,12 +5,15 @@
 
 Welcome to h2o's documentation!
 ===============================
+H2O is the math runtime for BigData
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
-
+   
+   how_to_start_h2o
+   new_page
 
 
 Indices and tables

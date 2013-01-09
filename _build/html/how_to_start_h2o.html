@@ -1,0 +1,231 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How To Start H2O &mdash; h2o 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="h2o 0.2 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to h2o’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to h2o’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">h2o 0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-start-h2o">
+<h1>How To Start H2O<a class="headerlink" href="#how-to-start-h2o" title="Permalink to this headline">¶</a></h1>
+<p>H2O is a pure java application.
+## Starting a H&lt;sub&gt;2&lt;/sub&gt;O cluster from the command line</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Open the terminal program on your computer
+Mac Example: Click applications -&gt; utilities -&gt; terminal
+PC Example: Click start -&gt; all programs -&gt; accessories -&gt; command prompt</li>
+<li>Locate your h2o.jar file
+Note: make sure you have downloaded the latest version of the file
+File Example: h2o-12.29.10-121812.jar
+Mac Example: Click Finder -&gt; Downloads -&gt; Look under the date you downloaded the file
+PC Example: Click start -&gt; your user name at the top -&gt; downloads</li>
+<li>Run the following command
+Input the following command in your terminal window
+java -Xmx1g -jar h2o.jar -name mystats-cloud
+Note: The h2o.jar should look like this h2o-12.29.10-121812.jar</li>
+<li>The terminal should respond with the following
+java -Xmx1g -jar h2o.jar  -name mystats-cloud -ip 192.168.1.90
+[h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
+[h2o] (v0.3) &#8216;mystats-cloud&#8217; on /192.168.1.90:54321, discovery address /236.151.114.91:60567
+[h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]</li>
+<li>You have created a cloud! Open browser to &lt;code&gt;http://localhost:54321/&lt;/code&gt; and start playing with
+your data.</li>
+</ol>
+</div></blockquote>
+<p>If you have multiple internet interfaces you will be prompted for -ip</p>
+<dl class="docutils">
+<dt>## Shutdown a cloud:</dt>
+<dd><p class="first"><a class="reference external" href="http://ip-address:54321/Shutdown">http://ip-address:54321/Shutdown</a></p>
+<p>example:
+wget <a class="reference external" href="http://192.168.1.150:54321/Shutdown">http://192.168.1.150:54321/Shutdown</a></p>
+<p class="last">Also via, kill signal to all pids on all nodes
+$ kill -9 PID</p>
+</dd>
+</dl>
+<p>## Launch with HDFS</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="docutils">
+<dt>parameters:</dt>
+<dd>-hdfs -hdfs_version -hdfs_root</dd>
+</dl>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Input the following command in your terminal window
+java -Xmx1g -jar h2o.jar -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets
+Note: The h2o.jar should look like this h2o-12.29.10-121812.jar</li>
+<li>The terminal should respond with the following
+[h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
+[h2o] (v0.3) &#8216;mystats-cloud&#8217; on /192.168.1.90:54321, discovery address /236.151.114.91:60567
+Nov 28, 2012 3:41:25 PM org.apache.hadoop.util.NativeCodeLoader &lt;clinit&gt;
+WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where
+applicable
+[h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
+[h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54321]</li>
+<li>Open browser to &lt;code&gt;http://localhost:54321/&lt;/code&gt; and start playing with your data!</li>
+</ol>
+</div></blockquote>
+<p>##Starting Multiple Nodes</p>
+<p>###Launch with FlatFile of nodes</p>
+<p>H2O can use UDP multicast, which may create traffic on other ports, but that shouldn&#8217;t matter or occur if you use the <strong>&#8211;flatfile</strong> option.
+The flatfile is now required for all installations, to avoid any dependence on UDP multicast.
+The flatfile must be the same for all invocations, and has this format (the ports match the base address that was given above. In prior versions of H2O, the ip address must be the base address plus 1)</p>
+<blockquote>
+<div>/192.168.1.173:55313
+/192.168.1.174:55313
+/192.168.1.175:55313</div></blockquote>
+<p>For default ports (<a class="reference external" href="HTTP:54321">HTTP:54321</a>, UDP:54322, TCP:54323)
+Just flat file of ip addresses works:</p>
+<blockquote>
+<div>192.168.1.173
+192.168.1.174
+192.168.1.175</div></blockquote>
+<p>example:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>java -Xmx4g -jar h2o.jar -flatfile flatfile</dt>
+<dd>[h2o] HTTP listening on port: 54321, UDP port: 54322, TCP port: 54323
+[h2o] (v0.3) &#8216;hduser&#8217; on /192.168.1.151:54321, static configuration based on -flatfile flatfile
+[h2o] Paxos Cloud of size 1 formed: [/192.168.1.151:54321]
+[h2o] Paxos Cloud voting in progress
+[h2o] Paxos Cloud of size 2 formed: [/192.168.1.151:54321, /192.168.1.150:54321</dd>
+</dl>
+</div></blockquote>
+<p>## Other issues/arguments
+There are a number of arguments to an H2O jar invocation. All instantiations of the jar must have the exact same arguments.
+You should verify what java is installed on your machine. Ideally all machines have the same java and version?</p>
+<blockquote>
+<div><p>java -version</p>
+<p>java version &#8220;1.7.0_09&#8221;
+Java(TM) SE Runtime Environment (build 1.7.0_09-b05)
+Java HotSpot(TM) 64-Bit Server VM (build 23.5-b02, mixed mode)</p>
+</div></blockquote>
+<p>Example:</p>
+<blockquote>
+<div>java -Xmx28G -ea -jar /tmp/h2o.jar &#8211;port=55313 &#8211;ip=192.168.1.173 &#8211;ice_root=/home/0xdiag/ice.55313.1354140499.31 &#8211;name=pytest-kevin -hdfs hdfs://192.168.1.151 -hdfs_version cdh4 -hdfs_root /datasets &#8211;flatfile=/tmp/flatfile_kevin</div></blockquote>
+<p><strong>-Xmx28G</strong> specifies a maximum size of 28GB for the java heap. Generally, the default java heap size used by the OS will not be sufficient for any large datasets. It should be set as large as possible, but no bigger than the max dram size minus 1-2GB. If there are other java programs running simultaneously, you should decrease their heap size limits, from the amount you can allocate to the h2o heap. It is okay to have different heap sizes on different h2o invocations, but typically multi-node systems should have machines that are reasonably similar, with similar max heap sizes.</p>
+<p><strong>-name</strong> A unique name for a H2O cloud is required, to avoid joining any existing H2O cloud on the network. Sometimes orphan, so-called &#8220;zombie&#8221; H2O processes might exist with the same cloud name, due to errors or problems with prior H2O invocations. It&#8217;s good to verify that no unknown H2O processes exist (using ps on Unix systems) before starting a new H2O.</p>
+<p><strong>-ea</strong> is for enabling java assertions. For reporting potential issues to 0xdata, it&#8217;s probably useful to use this at all times.</p>
+<p><strong>&#8211;ice_root</strong> is the directory where H2O keys will be stored. This can be a lot of data, so should be somewhere with a lot of disk space. (the amount should be some multiple of the datasets you want to model)</p>
+<p>You will want to make sure the <strong>&#8211;port</strong> is an unused port, and the three addresses covered by &#8211;port through &#8211;port + 3, are open through any network switches, routers, or OS&#8217;es in use. UDP/HTTP/TCP protocol is used.
+If you have aggressive firewalling, either hardware or software, you may need to open the ports used.</p>
+<p>If the <strong>-hdfs</strong> arg is used, then the <strong>-hdfs_version</strong> and <strong>-hdfs_root</strong> must also be given.
+H2O supports cdh4 and mapr. Other vanilla hadoop hdfs distributions should also work
+(UPDATE: what are the exact args?)</p>
+<p><strong>-hdfs_root</strong> is interrogated at h2o boot time, for files that get keys that point to them for possible loading. If the -hdfs arg is used, and the ip address doesn&#8217;t exist, or the hdfs_root doesn&#8217;t exist, or there are other problems with hdfs accessiblity, h2o will report problems and not start.</p>
+<p>Not all errors in h2o are currently reported to the browser. Some show up in the stdout and more likely the stderr. Both files should be examined for information.
+Contents:</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How To Start H2O</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to h2o&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/how_to_start_h2o.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to h2o’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">h2o 0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, SriSatish Ambati.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

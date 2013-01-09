@@ -1,0 +1,16 @@
+
+Welcome to h2o's documentation!
+===============================
+H2O is the math runtime for BigData
+
+Contents:
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
