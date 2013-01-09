@@ -64,8 +64,8 @@ Parameters: -hdfs -hdfs_version -hdfs_root
        * [h2o] (v0.3) 'mystats-cloud' on /192.168.1.90:54321, discovery address /236.151.114.91:60567
        * Nov 28, 2012 3:41:25 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
        * WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-       *[h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
-       *[h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54323]
+       * [h2o,hdfs] hdfs://192.168.1.151/datasets loaded 51 keys
+       * [h2o] Paxos Cloud of size 1 formed: [/192.168.1.90:54323]
 
 3. Open browser to http://localhost:54323/ and start playing with your data!
   
