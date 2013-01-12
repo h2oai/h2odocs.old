@@ -22,7 +22,7 @@
 6. Your data will appear in the form of columns and rows. 
 7. Congratulations! Now you can console your data!
 
-**Random Forest**
+**Build a Random Forest Model**
 
 1. Make sure h2o is open.(See 'How to start H2O' page)
 2. Make sure you have ingested your data. (See 'How to Ingest Data' page)
@@ -33,7 +33,7 @@
 7. Click on one of the trees. (The trees are the blue numbers at the bottom of the page)
 8. Congratulations! You have created a random forest model! 
 
-**GLM**
+**Build a GLM Model**
 
 1. Make sure h2o is open.(See 'How to start H2O' page)
 2. Make sure you have ingested your data. (See 'How to Ingest Data' page)
@@ -42,4 +42,4 @@
 5. Input your h2o key for the file 
 6. 
 
-**GLM Grid**
+**Build a GLM Grid Model**
