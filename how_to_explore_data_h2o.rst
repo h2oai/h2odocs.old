@@ -39,7 +39,7 @@
 2. Make sure you have ingested your data. (See 'How to Ingest Data' page)
 3. Once you have opened h2o click MODEL.
 4. Then click GLM
-5. Input your h2o key for the file 
+5. Input your h2o key for the file
 6. 
 
 **Build a GLM Grid Model**
