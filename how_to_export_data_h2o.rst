@@ -9,4 +9,5 @@
 3. Once you have opened h2o click DATA.
 4. Then click DOWNLOAD
 5. Input the data's h2o key and click SUBMIT
-6. 
+
+Congratulations! You have Downloaded your data. 
