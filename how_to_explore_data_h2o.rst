@@ -40,6 +40,21 @@
 3. Once you have opened h2o click MODEL.
 4. Then click GLM
 5. Input your h2o key for the file
-6. 
+6. Next to Y select your output column
+7. X default selects all input columns. If you wish to explicitly ignore an input column deselect it. 
+8. By clicking HELP you can determine how to select the rest of the arguments
+9. Once you have made all of your selections click SUBMIT 
+10. Now you can explore your data with the GLM model. 
 
 **Build a GLM Grid Model**
+
+1. Make sure h2o is open.(See 'How to start H2O' page)
+2. Make sure you have ingested your data. (See 'How to Ingest Data' page)
+3. Once you have opened h2o click MODEL.
+4. Then click GLM GRID
+5. Input your h2o key for the file
+6. Next to Y select your output column
+7. X default selects all input columns. If you wish to explicitly ignore an input column deselect it. 
+8. By clicking HELP you can determine how to select the rest of the arguments
+9. Once you have made all of your selections click SUBMIT 
+10. Now you can explore your data with the GLM GRID model. 
